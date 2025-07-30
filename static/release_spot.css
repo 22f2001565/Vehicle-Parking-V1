@@ -81,10 +81,3 @@ body {
 .cancel-btn:hover {
     background-color: #c82333;
 }
-
-.note {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #6c757d;
-    text-align: center;
-}  
