@@ -20,8 +20,8 @@
 - **View Parking Summary** - Tabular and Chart-based summaries  
 
 ## Project Structure
-•	**Flask** : Web framework for routing and server logic  
-•	**Flask-SQLAlchemy** : To manage database operations  
-•	**SQLite** : Lightweight relational database  
-•	**Jinja2** : Template rendering  
-•	**HTML/CSS** : Frontend for templates  
+- **Flask**: Web framework for routing and server logic  
+- **Flask-SQLAlchemy**: To manage database operations  
+- **SQLite**: Lightweight relational database  
+- **Jinja2**: Template rendering  
+- **HTML/CSS**: Frontend for templates
