@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Occupied Parking Spot Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='view_spot_details.css') }}">
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">Occupied Parking Spot Details</div>
+    <form>
+      <div class="form-group">
+        <label for="spot-id">Name :</label>
+        <input type="text" id="spot-id" value="{{ reservation.user.full_name }}" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="customer-id">Customer ID :</label>
+        <input type="text" id="customer-id" value="{{ reservation.user.id }}" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="vehicle-number">Vehicle number :</label>
+        <input type="text" id="vehicle-number" value="{{ reservation.vehicle_num }}" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="datetime">Date/time of parking :</label>
+        <input type="text" id="datetime" value="{{ reservation.parking_timestamp.strftime('%Y-%m-%d %H:%M:%S') if reservation.parking_timestamp else 'N/A' }}" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="cost">Est. parking cost :</label>
+        <input type="text" id="cost" value="{{ reservation.parking_cost if reservation.parking_cost else 'Still Parked' }}" readonly />
+      </div>
+      <div class="form-buttons">
+        <button type="button" onclick="window.location.href='/lot_detail/{{ spot.lot_id }}'">Close</button>
+      </div>      
+    </form>
+  </div>
+</body>
+</html>

@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>View/Delete Parking Spot</title>
+    <title>View Parking Spot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='view_spot_details.css') }}" />
 </head>
-
 <body>
     <div class="form-container">
         <div class="form-header">View Parking Spot Details</div>
-        <form method="POST" action="{{ url_for('delete_spot', spot_id=spot.id) }}">
-            <div class="form-group">
-                <label for="spot-id">ID :</label>
-                <input type="text" id="spot-id" name="spot_id" value="{{ spot.id }}" readonly />
-            </div>
-
-            <div class="form-group">
-                <label for="status">Status:</label>
-                {% if spot.status == 'O' %}
-                    <a href="{{ url_for('view_users', user_id=reservation.user.id) }}" class="status-link">Occupied (Click to view details)</a>
-                {% else %}
-                    <input type="text" id="status" value="{{ spot.status }}" readonly />
-                {% endif %}
-            </div>
-
-            <div class="form-buttons">
-                <button type="submit" formaction="/delete_spot/{{ spot.id }}">Delete</button>
-                <button type="button" onclick="window.location.href='/lot_detail/{{ spot.lot_id }}'">Close</button>
-            </div>
-            <div class="note">Are you sure you want to delete this spot?</div>
-        </form>
+        <div class="form-group">
+            <label for="spot-id">ID:</label>
+            <input type="text" id="spot-id" name="spot_id" value="{{ spot.id }}" readonly />
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            {% if spot.status == 'O' %}
+                <a href="{{ url_for('parking_detail', spot_id=spot.id) }}" class="status-link">Occupied (Click to view user)</a>
+            {% else %}
+                <input type="text" id="status" value="Available" readonly />
+            {% endif %}
+        </div>
+        <div class="form-buttons">
+            <button type="button" onclick="window.location.href='{{ url_for('lot_detail', lot_id=spot.lot_id) }}'">Close</button>
+        </div>
     </div>
-
 </body>
-
 </html>

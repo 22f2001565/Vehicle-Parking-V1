@@ -145,6 +145,20 @@ def view_spot(spot_id):
     return render_template("view_spot_details.html", spot=spot, reservation=reservation)
 
 
+@app.route('/parking_detail/<int:spot_id>')
+def parking_detail(spot_id):
+    spot = ParkingSpot.query.get_or_404(spot_id)
+    if spot.status != 'O':
+        return redirect(url_for('view_spot', spot_id=spot_id))
+
+    reservation = Reservation.query.filter_by(spot_id=spot_id).first()
+
+    if not reservation:
+        return redirect(url_for('view_spot', spot_id=spot_id))
+
+    return render_template('parking_detail.html', reservation=reservation, spot=spot)
+
+
 @app.route("/delete_spot/<int:spot_id>", methods=["POST"])
 def delete_spot(spot_id):
     spot = ParkingSpot.query.get_or_404(spot_id)

@@ -9,6 +9,7 @@
 <body>
   <div class="container mt-4">
     <h2 class="text-center">{{ lot.prime_location_name }} : {{ lot.address }}</h2>
+
     <div class="text-center mb-3">
       <span class="badge badge-success p-2 mr-3" style="font-size:1.1rem;">
         Available: {{ total_spots - occupied_count }}
@@ -17,18 +18,29 @@
         Occupied: {{ occupied_count }}
       </span>
     </div>
-    <div class="slots-grid">
+
+    <div class="slots-grid d-flex flex-wrap justify-content-center">
       {% for spot in spots %}
-      <form method="POST" action="{{ url_for('view_spot', spot_id=spot.id) }}">
-        <button type="submit" class="slot {% if spot.status == 'O' %}occupied{% else %}available{% endif %}"
-          title="Spot ID: {{ spot.id }} - Status: {{ 'Occupied' if spot.status == 'O' else 'Available' }}">
-          {{ 'O' if spot.status == 'O' else 'A' }}
-        </button>
-      </form>
+        {% if spot.status == 'O' %}
+          <form method="GET" action="{{ url_for('parking_detail', spot_id=spot.id) }}">
+            <button type="submit" class="slot occupied m-1"
+              title="Spot ID: {{ spot.id }} - Status: Occupied">
+              O
+            </button>
+          </form>
+        {% else %}
+          <form method="GET" action="{{ url_for('view_spot', spot_id=spot.id) }}">
+            <button type="submit" class="slot available m-1"
+              title="Spot ID: {{ spot.id }} - Status: Available">
+              A
+            </button>
+          </form>
+        {% endif %}
       {% endfor %}
     </div>
+
     <div class="text-center mt-4">
-      <a href="/admin_dashboard" class="btn btn-secondary">Back to Lot Details</a>
+      <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Lot Details</a>
     </div>
   </div>
 </body>
