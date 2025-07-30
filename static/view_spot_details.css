@@ -115,10 +115,3 @@ body {
 .form-buttons button[type="button"]:hover {
     background-color: #5a6268;
 }
-  
-.note {
-    text-align: center;
-    font-size: 13px;
-    color: #868e96;
-    margin-top: 20px;
-}
