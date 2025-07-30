@@ -13,11 +13,11 @@
 
 ### Admin Features
 - **Admin Dashboard** - overview of all parking lots and occupancy
-- **Add/Edit/Delete Lots**
-- **Manage Spots** within each lot
-- **Search Parking Lots**
-- **View Registered Users**
-- **View Parking Summary** - Tabular and Chart-based summaries
+- **Add/Edit/Delete Lots**  
+- **Manage Spots** within each lot  
+- **Search Parking Lots**  
+- **View Registered Users**  
+- **View Parking Summary** - Tabular and Chart-based summaries  
 
 ## Project Structure
 •	**Flask** : Web framework for routing and server logic  
