@@ -1,4 +1,4 @@
-from flask import Flask, current_app as app
+from flask import current_app as app
 from flask import request, redirect, render_template
 from models.models import *
 
@@ -33,9 +33,9 @@ def login():
         if this_user:
             if this_user.password== password:
                 if this_user.type== "admin":
-                    return redirect("/admin_dash")
+                    return redirect("/admin_dashboard")
                 else:
-                    return redirect(f"/user_dash/{this_user.id}")
+                    return redirect(f"/user_dashboard/{this_user.id}")
             else:
                 return "Password is Incorrect"
         else:

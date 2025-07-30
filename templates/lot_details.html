@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parking Lot Details - {{ lot.prime_location_name }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='lot_details.css') }}">
+</head>
+<body>
+  <div class="container mt-4">
+    <h2 class="text-center">{{ lot.prime_location_name }} : {{ lot.address }}</h2>
+    <div class="text-center mb-3">
+      <span class="badge badge-success p-2 mr-3" style="font-size:1.1rem;">
+        Available: {{ total_spots - occupied_count }}
+      </span>
+      <span class="badge badge-danger p-2" style="font-size:1.1rem;">
+        Occupied: {{ occupied_count }}
+      </span>
+    </div>
+    <div class="slots-grid">
+      {% for spot in spots %}
+      <form method="POST" action="{{ url_for('view_spot', spot_id=spot.id) }}">
+        <button type="submit" class="slot {% if spot.status == 'O' %}occupied{% else %}available{% endif %}"
+          title="Spot ID: {{ spot.id }} - Status: {{ 'Occupied' if spot.status == 'O' else 'Available' }}">
+          {{ 'O' if spot.status == 'O' else 'A' }}
+        </button>
+      </form>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="/admin_dashboard" class="btn btn-secondary">Back to Lot Details</a>
+    </div>
+  </div>
+</body>
+</html>

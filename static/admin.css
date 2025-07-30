@@ -1,0 +1,249 @@
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-profile-btn {
+    color: #ccc;
+    border: 1px solid transparent;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.edit-profile-btn:hover {
+    color: #fff;
+    background-color: #6c757d;
+    text-decoration: none;
+    border-color: #6c757d;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.action-buttons a, .action-buttons form button {
+  margin-right: 0.5rem;
+}
+
+.action-buttons a:last-child,
+.action-buttons form button:last-child {
+    margin-right: 0;
+}
+
+.btn-outline-secondary svg {
+    vertical-align: middle;
+    margin-right: 0.25rem;
+    fill: currentColor;
+}
+
+
+/* Admin Summary */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.users-box {
+    margin-top: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+}
+
+.user-table thead {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.footer-note {
+    text-align: center;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/*@media (max-width: 768px) {
+    .user-table th,
+    .user-table td {
+        padding: 8px;
+    }
+
+    .users-box {
+        padding: 15px;
+    }
+}*/
+
+/* Admin Search */
+
+.search-section {
+    margin: 30px auto;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.search-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-section select, .search-section input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-section button {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-section button:hover {
+    background-color: #495057;
+}
+
+.search-hint {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #6c757d;
+    text-align: center;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px auto;
+    font-weight: 500;
+    color: #444;
+}
+
+.parking-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 30px 40px;
+}
+
+.parking-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.parking-card:hover {
+    transform: translateY(-5px);
+}
+
+.parking-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #343a40;
+}
+
+.parking-card .actions {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.parking-card .actions a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 5px;
+}
+
+.parking-card .actions a:hover {
+    text-decoration: underline;
+}
+
+.parking-card .status {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.slot {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+}
+
+.slot.available {
+    background-color: #28a745;
+}
+
+.slot.occupied {
+    background-color: #dc3545;
+}
+
+.summary-info {
+    margin: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.chart-container {
+    padding: 20px;
+    text-align: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: 300px !important;
+}

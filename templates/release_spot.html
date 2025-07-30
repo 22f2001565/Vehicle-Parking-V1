@@ -1,0 +1,106 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Release Parking Spot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='release_spot.css') }}">
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">Release Spot: {{ lot.prime_location_name }}</div>
+
+    <div class="form-group">
+      <label for="spot_id">Spot ID:</label>
+      <input type="text" id="spot_id" value="{{ spot.id }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="vehicle_no">Vehicle Number:</label>
+      <input type="text" id="vehicle_no" value="{{ reservation.vehicle_num }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="parking_time">Parking Time:</label>
+      <input type="text" id="parking_time" 
+        value="{{ reservation.parking_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="release_time">Releasing Time:</label>
+      <input type="text" id="release_time" readonly
+        value="{% if reservation.status == 'released' and reservation.leaving_timestamp %}
+                 {{ reservation.leaving_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+               {% else %}
+                 {{ preview_time.strftime('%Y-%m-%d %H:%M:%S') }}
+               {% endif %}">
+    </div>
+
+    <div class="form-group">
+      <label for="cost">Total Cost:</label>
+      <input type="text" id="cost" readonly
+        value="{% if reservation.status == 'released' and reservation.parking_cost %}
+                 ₹{{ '%.2f' % reservation.parking_cost }}
+               {% else %}
+                 ₹{{ '%.2f' % preview_cost }}
+               {% endif %}">
+    </div>
+
+    <form action="{{ url_for('release_parking', reservation_id=reservation.id) }}" method="POST">
+      <div class="form-buttons">
+        <button type="submit" name="action" value="cancel" class="action-btn cancel-btn">Cancel</button>
+        <button type="submit" name="action" value="release" class="action-btn release-btn">Release</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Release Parking Spot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='release_spot.css') }}">
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">Release Spot: {{ lot.prime_location_name }}</div>
+
+    <div class="form-group">
+      <label for="spot_id">Parking Spot:</label>
+      <input type="text" id="spot_id" value="{{ spot.id }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="vehicle_no">Vehicle Number:</label>
+      <input type="text" id="vehicle_no" value="{{ reservation.vehicle_num }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="parking_time">Parking Time:</label>
+      <input type="text" id="parking_time" value="{{ reservation.parking_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}"
+        readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="release_time">Releasing Time:</label>
+      <input type="text" id="release_time" readonly
+        value="{% if reservation.status == 'released' and reservation.leaving_timestamp %}{{ reservation.leaving_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}{% else %}{{ preview_time.strftime('%Y-%m-%d %H:%M:%S') }}{% endif %}">
+    </div>
+
+    <div class="form-group">
+      <label for="cost">Total Cost:</label>
+      <input type="text" id="cost" readonly
+        value="{% if reservation.status == 'released' and reservation.parking_cost %}₹{{ '%.2f' % reservation.parking_cost }}{% else %}₹{{ '%.2f' % preview_cost }}{% endif %}">
+    </div>
+
+    <form action="{{ url_for('release_parking', reservation_id=reservation.id) }}" method="POST">
+      <div class="form-buttons">
+        <button type="submit" name="action" value="cancel" class="action-btn cancel-btn">Cancel</button>
+        <button type="submit" name="action" value="release" class="action-btn release-btn">Release</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-brand">Welcome to Admin</div>
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="adminNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_details">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_search">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_summary">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>     
+      
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Parking Lots</h4>
+    <form action="/add_lot" method="get" class="mb-0">
+      <button type="submit" class="btn btn-outline-secondary btn-sm font-weight-bold">
+        + Add Lot
+      </button>
+    </form>
+  </div>
+
+  <ul class="list-group">
+    {% for entry in lots %}
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div>
+            <h5 class="mb-1">{{ entry.lot.prime_location_name }}</h5>
+            <div>
+              <a href="/edit_lot/{{ entry.lot.id }}" class="btn btn-outline-primary btn-sm mr-2">Edit</a>
+              <a href="/delete_lot/{{ entry.lot.id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </div>
+          </div>
+
+          <div class="text-right">
+            <div class="mb-2">
+              <span class="text-success font-weight-bold mr-2"> A: {{ entry.total_spots - entry.occupied }}</span> 
+              <span class="text-danger font-weight-bold"> O: {{ entry.occupied }}</span>
+            </div>
+            <form action="/lot_detail/{{ entry.lot.id }}" method="get" style="display: inline;">
+              <button type="submit" class="btn btn-primary btn-sm">See Slots</button>
+            </form>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+</body>
+</html>

@@ -39,7 +39,7 @@ class ParkingSpot(db.Model):
 class Reservation(db.Model):
     __tablename__= 'reservations'
     id= db.Column(db.Integer, primary_key=True)
-    spot_id= db.Column(db.Integer, db.ForeignKey('parking_spots.id'), nullable=False)
+    spot_id= db.Column(db.Integer, db.ForeignKey('parking_spots.id'), nullable=True)
     user_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     vehicle_num= db.Column(db.String, nullable=False)
     parking_timestamp= db.Column(DateTime)

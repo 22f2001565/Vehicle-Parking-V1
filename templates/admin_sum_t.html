@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Users</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-brand">Welcome to Admin</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminNavbar"
+      aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user_details">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_summary">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="users-box">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="section-title">Admin - Parking Reservation Summary</div>
+      <a href="/admin/summary/chart" class="btn btn-primary">Chart View</a>
+    </div>
+    <div class="table-container">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Reservation ID</th>
+            <th>User</th>
+            <th>Vehicle</th>
+            <th>Lot Location</th>
+            <th>Spot ID</th>
+            <th>Parked At</th>
+            <th>Left At</th>
+            <th>Duration (mins)</th>
+            <th>Cost (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for res in reservations %}
+          <tr>
+            <td>{{ res.id }}</td>
+            <td>{{ res.user.full_name }}</td>
+            <td>{{ res.vehicle_num }}</td>
+            <td>{{ res.spot.lot.prime_location_name }}</td>
+            <td>{{ res.spot.id }}</td>
+            <td>{{ res.parking_timestamp.strftime('%H:%M %p') if res.parking_timestamp else 'N/A' }}</td>
+            <td>{{ res.leaving_timestamp.strftime('%H:%M %p') if res.leaving_timestamp else 'In Progress' }}</td>
+            <td>
+              {% if res.leaving_timestamp %}
+                {{ ((res.leaving_timestamp - res.parking_timestamp).total_seconds() // 60)|int }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+            <td>
+              {% if res.parking_cost %}
+                ₹{{ "%.2f"|format(res.parking_cost) }}
+              {% else %}
+                In Progress
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

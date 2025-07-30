@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Parking Lot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_lot.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">Add New Parking Lot</div>
+        <form method="POST" action="{{ url_for('add_lot') }}">
+            <div class="form-group">
+                <label for="location">Prime Location Name :</label>
+                <input type="text" id="location" name="location" placeholder="Enter location name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pin code :</label>
+                <input type="text" id="pincode" name="pincode" placeholder="e.g. 400100" required />
+            </div>
+    
+            <div class="form-group">
+                <label for="price">Price (per hour) :</label>
+                <input type="number" id="price" name="price" placeholder="e.g. 20" step="0.01" required />
+            </div>
+    
+            <div class="form-group">
+                <label for="spots">Maximum spots :</label>
+                <input type="number" id="spots" name="spots" placeholder="e.g. 15" required />
+            </div>
+    
+            <div class="form-buttons">
+                <button type="button" onclick="window.location.href='/admin_dashboard'">Cancel</button>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>No Spots Available</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='slot_warn.css') }}">
+</head>
+<body>
+  <div class="message-box">
+    <h1>Already Booked</h1>
+    <p>You have already booked a slot in this location</p>
+  </div>
+  <div>
+    <button type="button" onclick="window.location.href='{{ url_for('user_dashboard', user_id=user.id) }}'">Go to
+      Home</button>
+  </div>
+</body>
+</html>

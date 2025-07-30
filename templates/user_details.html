@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Users</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-brand">Welcome to Admin</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminNavbar"
+      aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user_details">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_summary">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="users-box">
+    <div class="section-title">Registered Users</div>
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>E-Mail</th>
+          <th>Full Name</th>
+          <th>Address</th>
+          <th>Pin Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.full_name }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.pincode if user.pincode else 'N/A' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
