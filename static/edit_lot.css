@@ -94,26 +94,3 @@ body {
 .form-buttons button[type="button"]:hover {
     background-color: #5a6268;
 }
-
-.note {
-    text-align: center;
-    font-size: 13px;
-    color: #868e96;
-    margin-top: 20px;
-}
-
-@media (max-width: 480px) {
-    .edit-container {
-        max-width: 95vw;
-        padding: 20px;
-    }
-
-    .form-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .form-buttons button {
-        width: 100%;
-    }
-}

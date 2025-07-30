@@ -122,19 +122,3 @@ body {
     color: #868e96;
     margin-top: 20px;
 }
-  
-@media (max-width: 480px) {
-    .form-container {
-        max-width: 95vw;
-        padding: 20px;
-    }
-  
-    .form-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-  
-    .form-buttons button {
-        width: 100%;
-    }
-}

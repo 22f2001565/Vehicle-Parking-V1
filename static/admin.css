@@ -95,17 +95,6 @@ body {
     color: #6c757d;
 }
 
-/*@media (max-width: 768px) {
-    .user-table th,
-    .user-table td {
-        padding: 8px;
-    }
-
-    .users-box {
-        padding: 15px;
-    }
-}*/
-
 /* Admin Search */
 
 .search-section {
